@@ -185,7 +185,7 @@
         <path
           fill="#ffff"
           fill-opacity="1"
-          d="M0,32L48,80C96,128,192,224,288,261.3C384,299,480,277,576,266.7C672,256,768,256,864,250.7C960,245,1056,235,1152,240C1248,245,1344,267,1392,277.3L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          d="M0,288L26.7,266.7C53.3,245,107,203,160,165.3C213.3,128,267,96,320,96C373.3,96,427,128,480,144C533.3,160,587,160,640,181.3C693.3,203,747,245,800,229.3C853.3,213,907,139,960,128C1013.3,117,1067,171,1120,186.7C1173.3,203,1227,181,1280,176C1333.3,171,1387,181,1413,186.7L1440,192L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"
         ></path>
       </svg>
     </section>
@@ -199,7 +199,7 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+            <form name="fery-febrian">
               <div class="mb-3">
                 <label for="name" class="form-label">Nama Lengkap</label>
                 <input
@@ -207,6 +207,7 @@
                   class="form-control"
                   id="name"
                   aria-describedby="name"
+                  name="nama"
                 />
               </div>
               <div class="mb-3">
@@ -216,6 +217,7 @@
                   class="form-control"
                   id="email"
                   aria-describedby="email"
+                  name="email"
                 />
               </div>
 
@@ -223,7 +225,12 @@
                 <label for="pesan" class="form-label"
                   >Pesan Moral atau Pesan Cinta</label
                 >
-                <textarea class="form-control" id="pesan" rows="3"></textarea>
+                <textarea
+                  class="form-control"
+                  id="pesan"
+                  rows="3"
+                  name="pesan"
+                ></textarea>
               </div>
 
               <button
@@ -279,5 +286,18 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbyVNUmTgpbzEV71F__WeIE-lluDxNvHCUxL-JPH45bDgE7X0d5JX-vA5H4ySXm0XsrFIA/exec";
+      const form = document.forms["fery-febrian"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => console.log("Success!", response))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
